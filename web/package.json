@@ -1,0 +1,72 @@
+{
+  "name": "package.json",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@vuepic/vue-datepicker": "^5.4.0",
+    "apexcharts": "^3.33.0",
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "path": "^0.12.7",
+    "simplebar": "^5.3.6",
+    "simplebar-vue3": "^0.1.5",
+    "sweetalert2": "^11.3.6",
+    "timeago.js": "^4.0.2",
+    "vue": "^3.3.4",
+    "vue-axios": "^3.5.2",
+    "vue-loading-overlay": "^6.0.3",
+    "vue-meta": "^2.4.0",
+    "vue-multiselect": "^3.0.0-beta.3",
+    "vue-router": "^4.3.0",
+    "vue-sweetalert2": "^5.0.5",
+    "vue-toastification": "2.0.0-rc.5",
+    "vue3-apexcharts": "^1.4.1",
+    "vue3-multiselect-checkboxed": "^0.0.9",
+    "vuex": "^4.0.0",
+    "vuex-persistedstate": "^4.1.0",
+    "bootstrap": "^5.3.0",
+    "bootstrap-vue": "^2.23.1",
+    "bootstrap-vue-next": "^0.7.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-airbnb": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-vue": "^8.0.3",
+    "eslint-plugin-vuejs-accessibility": "^1.1.0",
+    "sass": "^1.74.1",
+    "unplugin-vue-components": "^0.23.0",
+    "vite": "^5.2.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  }
+}

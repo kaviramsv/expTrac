@@ -1,0 +1,33 @@
+# npm create vite@latest . 
+ =>  give name for package.json
+ =>  and also choose vue
+
+# npm i
+
+# Go to google fonts : go to https://github.com/google/material-design-icons .
+Copy to index.html the following
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet">
+
+
+#GO TO FONTS.GOOGLE.COM get the embed code place them above the previous link
+
+https://fonts.google.com/selection/embed
+
+# npm add -D sass
+
+# npm i vue-router
+
+# delete every thing under components and its imports in vue
+
+
+<style scoped></style> change to =>  <style lang="scss"></style>
+#views folder
+https://getbootstrap.com/docs/5.2/getting-started/vite/#setup
+
+To override default styling;
+copy 
+1.app.scss
+2.variables.scss->(which is actually node_modules.bootstrap dist folder;)
+give whatever theme in variables.scss
+and if using scss=>change in app.vue also
