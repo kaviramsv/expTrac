@@ -24,6 +24,7 @@ import Sidebar from "./components/Sidebar.vue";
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 [data-bs-theme="light"] {

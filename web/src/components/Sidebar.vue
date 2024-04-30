@@ -16,10 +16,10 @@ import vueLogo from "../assets/vue.svg";
 
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
 
-const ToggleMenu = () => {
-  is_expanded.value = !is_expanded.value;
-  localStorage.setItem("is_expanded", is_expanded.value);
-};
+// const ToggleMenu = () => {
+//   is_expanded.value = !is_expanded.value;
+//   localStorage.setItem("is_expanded", is_expanded.value);
+// };
 const myFunction = () => {
   var element = document.body;
   element.dataset.bsTheme =
@@ -38,16 +38,17 @@ const myFunction = () => {
           >Home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
         >
       </router-link>
-      <router-link to="/about" class="button mb-3">
-        <span class="material-icons me-3 me-md-0">description</span>
-        <span class="text d-none d-md-block me-md-2"
-          >About&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
-        >
-      </router-link>
+
 
       <router-link to="/expense" class="button mb-3">
         <span class="material-icons me-3 me-md-0"> monetization_on </span>
         <span class="text d-none d-md-block me-md-2">Expense</span>
+      </router-link>
+            <router-link to="/about" class="button mb-3">
+        <span class="material-icons me-3 me-md-0">description</span>
+        <span class="text d-none d-md-block me-md-2"
+          >About&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+        >
       </router-link>
     </div>
     <div class="d-flex flex-column ms-3 justify-content-start">
@@ -112,7 +113,7 @@ const myFunction = () => {
   .button {
     display: flex;
     gap: 25px;
-
+    border-left: 5px  solid transparent;
     padding-left: 25px;
     &:hover {
       color: var(--primary);

@@ -20,10 +20,7 @@ export default {
   },
   setup() {
     const store = useStore();
-    const selectedNewStatus = ref("");
-    const selectedNewStatusDescription = ref("");
-    const updateStatusAnomalyId = ref("");
-    const oldStatus = ref("");
+   
     const timeagoString = (t) => {
       return timeago.format(t, "en_US");
     };
@@ -56,26 +53,7 @@ export default {
   },
   methods: {
     ...mapActions([]),
-    async handleSubmit(anomalyId) {
-      // console.log("in submit", this.selectedNewStatus, this.selectedNewStatusDescription);
-      // console.log(
-      //   "in submit",
-      //   this.selectedNewStatus,
-      //   this.selectedNewStatusDescription,
-      //   this.updateStatusAnomalyId,
-      //   "form" + "close"
-      // );
-      await this.store.dispatch("anomalies/changeStatus", {
-        anomalyId,
-        name: this.selectedNewStatus,
-        description: this.selectedNewStatusDescription,
-        formId: "form" + anomalyId + "close",
-      });
-      this.selectedNewStatus = "";
-      this.selectedNewStatusDescription = "";
-      this.updateStatusAnomalyId = "";
-      this.oldStatus = "";
-    },
+ 
   },
   components: {
     SimpleBar,
@@ -124,13 +102,7 @@ export default {
                 },
               },
             ],
-            // y: {
-            //   title: {
-            //     formatter: function () {
-            //       return "";
-            //     },
-            //   },
-            // },
+            
             marker: {
               show: true,
             },
@@ -161,6 +133,7 @@ export default {
 </script>
 
 <template>
+ 
   <span>
     <!-- style="height: calc(100vh-90px-70px)" -->
     <!-- :style="scrollHeight" -->
@@ -176,7 +149,7 @@ export default {
 								Add <code>.table-hover</code> to enable a hover state on table rows
 								within a <code>&lt;tbody&gt;</code>.
 							</p> -->
-    <div class="px-5">
+    <div class="px-2 px-lg-5">
       <div
         class="position-relative table-responsive mb-0"
         style="height: calc(63vh)"
@@ -191,7 +164,7 @@ export default {
                   ><i class="fa fa-sort-alpha-down-alt ms-2 text-primary"></i
                 ></span>
               </th>
-              <th>
+              <th class="d-none d-lg-table-cell">
                 Category
                 <span v-if="sortingParam == 'category-a'"
                   ><i class="fa fa-sort-alpha-down ms-2 text-primary"></i></span
@@ -207,7 +180,7 @@ export default {
                   ><i class="fa fa-sort-alpha-down-alt ms-2 text-primary"></i
                 ></span>
               </th>
-              <th>Spend For</th>
+              <th class="d-none d-lg-table-cell">Spend For</th>
               <th>Tag</th>
               <th>
                 Amount<span v-if="sortingParam == 'amount-a'"
@@ -224,13 +197,13 @@ export default {
               <td>
                 {{ new Date(expense?.timestamp).toLocaleString() }}
               </td>
-              <td>
+              <td class="d-none d-lg-table-cell">
                 {{ expense?.category }}
               </td>
               <td>
                 {{ expense?.shop }}
               </td>
-              <td>
+              <td class="d-none d-lg-table-cell">
                 {{ expense?.spendFor }}
               </td>
               <td>
@@ -255,7 +228,7 @@ export default {
                     class="me-4"
                     href="#"
                     data-bs-toggle="modal"
-                    data-bs-target="#"
+                    data-bs-target="#timelineModal"
                   >
                     <i class="fa-solid fa-pencil text-success"></i>
                   </button>
@@ -265,7 +238,7 @@ export default {
                     class="me-2"
                     href="#"
                     data-bs-toggle="modal"
-                    data-bs-target="#"
+                    data-bs-target="#timelineModal"
                   >
                     <i class="fa-solid fa-trash text-danger"></i>
                   </button>
@@ -298,7 +271,7 @@ export default {
           <div class="modal-body">
             <div>
               <h5 class="font-size-16 text-primary mb-4">
-                Details for Transaction
+                Get In touch to View More Details
               </h5>
             </div>
           </div>
@@ -330,10 +303,19 @@ export default {
         style=""
       >
         <!-- z-index: 3000; -->
-        <p class="ms-5 text-muted">
-          Showing {{ pager.currentPage * pager.pageSize }} -
-          {{ pager.currentPage * pager.pageSize + 50 }} of
-          {{ pager.totalItems }}
+        <p class="ms-5 text-muted d-none d-md-block" v-if=" pager.totalItems>=50 && pager.currentPage!=pager.endPage" >
+          Showing {{ pager.currentPage * pager.pageSize -50+1}} -
+          {{ pager.currentPage * pager.pageSize  }} of
+          {{ pager.totalItems }} Total Items
+        </p>
+      <!-- <p class="ms-5 text-muted d-none d-md-block" v-else >
+          Showing {{ pager.totalItems }} of
+          {{ pager.totalItems }} Total Items
+        </p> -->
+              <p class="ms-5 text-muted d-none d-md-block" v-if="pager.currentPage==pager.endPage" >
+          {{ pager.currentPage * pager.pageSize -50+1}} -
+          {{ pager.totalItems }} of
+          {{ pager.totalItems }} Total Items
         </p>
         <ul
           v-if="pager.pages && pager.pages.length"
@@ -405,4 +387,6 @@ ol {
   color: rgb(73, 87, 94) !important ;
   background: #868d8e !important ;
 }
+
+
 </style>

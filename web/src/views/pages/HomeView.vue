@@ -234,56 +234,7 @@ export default {
         },
       };
     };
-    const getChartOptions = (anomaly) => {
-      let chartOptions = {
-        chart: {
-          height: 350,
-          type: "bar",
-          toolbar: {
-            show: false,
-          },
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: "5%",
-            endingShape: "rounded",
-          },
-        },
-        dataLabels: {
-          enabled: false,
-        },
-
-        stroke: {
-          show: true,
-          width: 4,
-          colors: ["transparent"],
-        },
-
-        colors: ["#3b76e1", "#63ad6f"],
-
-        yaxis: {
-          title: {
-            text: "Number of Anomalies",
-          },
-        },
-        grid: {
-          borderColor: "#f1f1f1",
-        },
-        fill: {
-          opacity: 1,
-        },
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return val + " anomalies";
-            },
-          },
-        },
-      };
-      console.log("chart options", chartOptions);
-      return chartOptions;
-    };
+  
     const handleSubmit = async (modelData) => {
       // do something else with the data
       if (!modelData) {
@@ -534,6 +485,7 @@ export default {
 
                 <apexchart
                   class="mt-2"
+                
                   height="220"
                   type="donut"
                   :options="donutStoreChart.chartOptions"

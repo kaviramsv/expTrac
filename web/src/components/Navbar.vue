@@ -18,14 +18,14 @@ export default {
 };
 </script>
 <template>
-  <div class="navbar navbar-expand-lg mb-1 pb-5 pb-md-0">
+  <div class="navbar navbar-expand-lg mb-1 pb-5 pb-md-0 ">
     <div class="logo">
       <span class="material-icons font-size-12 text-warning">
         currency_rupee
       </span>
       <span class="ms-2 ms-md-0 text-warning">Expense Tracker</span>
     </div>
-    <div class="icons">
+    <div class="icons d-flex justify-content-end ">
       <button class="b btn border-0 d-none d-lg-block p-2">
         <span class="material-icons"> search </span>
       </button>
