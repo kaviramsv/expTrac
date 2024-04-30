@@ -68,106 +68,15 @@ export default {
 </script>
 
 <template>
-  <div class="auth-page">
-    <div class="container-fluid p-0 vh-100" style="background: #172d3c">
+  <div class="auth-page text-black-50  " style="background-color:#41587adc">
+    <div class="container-fluid p-0 vh-100">
       <div
         class="row g-0 align-items-center vh-100 w-90 d-flex justify-content-between"
-        style="background: #172d3c"
+       
       >
-        <!-- end col -->
-        <!-- <div class="col-xxl-8 col-lg-8 col-md-6"> -->
-        <div class="col-xxl-7 col-lg-7 col-md-6 ms-5 ps-5">
-          <div
-            class="auth-bg d-flex ms-5"
-            style="
-              -webkit-border-radius: 50px;
-              -moz-border-radius: 50px;
-              border-radius: 50px;
-              border: none;
-            "
-          >
-            <div class="bg-overlay bg-white"></div>
-            <!-- end bubble effect -->
-            <div class="" style="display: block; margin: auto">
-              <!-- <div class="col-xl-12 p-0"> -->
-              <!-- <img src="@/assets/images/ff2.jpg" class="img-fluid" alt="" /> -->
-              <!-- <img
-								src="@/assets/images/logo-dark-sm.png"
-								alt=""
-								height="250"
-								class="auth-logo-dark me-start"
-							/> -->
-              <!-- <div class="p-0 p-sm-4 px-xl-0 py-5 mb-4">
-                  <div
-                    id="reviewcarouselIndicators"
-                    class="carousel slide auth-carousel"
-                    data-bs-ride="carousel"
-                  >
-                    <div class="carousel-indicators carousel-indicators-rounded">
-                      <button
-                        type="button"
-                        data-bs-target="#reviewcarouselIndicators"
-                        data-bs-slide-to="0"
-                        class="active"
-                        aria-current="true"
-                        aria-label="Slide 1"
-                      ></button>
-                      <button
-                        type="button"
-                        data-bs-target="#reviewcarouselIndicators"
-                        data-bs-slide-to="1"
-                        aria-label="Slide 2"
-                      ></button>
-                      <button
-                        type="button"
-                        data-bs-target="#reviewcarouselIndicators"
-                        data-bs-slide-to="2"
-                        aria-label="Slide 3"
-                      ></button>
-                    </div>
-
-                    <div class="carousel-inner w-50 mx-auto">
-                      <div class="carousel-item active">
-                        <div class="testi-contain text-center">
-                          <h5 class="font-size-15 mt-2">
-                            “I feel confident imposing change on myself”
-                          </h5>
-                          <p class="font-size-15 text-muted mt-3 mb-0">
-                            Vestibulum auctor orci in risus iaculis consequat suscipit felis rutrum
-                          </p>
-                        </div>
-                      </div>
-
-                      <div class="carousel-item">
-                        <div class="testi-contain text-center">
-                          <h5 class="font-size-15 mt-2">
-                            “Our task must be to free widening our circle”
-                          </h5>
-                          <p class="font-size-15 text-muted mt-3 mb-0">
-                            Curabitur eget nulla eget augue dignissim condintum Nunc imperdiet
-                          </p>
-                        </div>
-                      </div>
-
-                      <div class="carousel-item">
-                        <div class="testi-contain text-center">
-                          <h5 class="font-size-15 mt-2">
-                            “I've learned that people will forget what you”
-                          </h5>
-                          <p class="font-size-15 text-muted mt-3 mb-0">
-                            Pellentesque lacinia scelerisque arcu in aliquam augue molestie rutrum
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                 
-                </div> -->
-              <!-- end review carousel -->
-              <!-- </div> -->
-            </div>
-          </div>
-        </div>
+       
+        
+         
         <div class="col-xxl-4 col-lg-4 col-md-6 me-5">
           <div class="row justify-content-center g-0">
             <div class="col-xl-9">
@@ -194,9 +103,11 @@ export default {
                             </router-link>
                           </div>
                           <div class="auth-content my-auto">
-                            <div class="text-center mt-2">
-                              <h5 class="mb-1">Welcome Back !</h5>
-                              <p class="text-muted mt-2">Sign in</p>
+                            <div class="text-center text-black-50 mt-2">
+                            
+                              <h5 class="mb-2 text-black">Expense Tracker</h5>
+
+                             <p class="mb-1 text-black">Sign In</p>
                             </div>
                             <form @submit.prevent class="mt-4 pt-2">
                               <div
@@ -206,11 +117,11 @@ export default {
                                 {{ authError }}
                               </div>
                               <div
-                                class="form-floating form-floating-custom mb-4 auth-pass-inputgroup"
+                                class="form-floating form-floating-custom mb-4 "
                               >
                                 <input
                                   type="text"
-                                  class="form-control"
+                                  class="form-control bg-white text-dark "
                                   id="input-username"
                                   placeholder="Enter User Name"
                                   v-model="userName"
@@ -219,10 +130,8 @@ export default {
                                     store.commit('setAuthError', '');
                                   "
                                 />
-                                <label for="input-username">Username</label>
-                                <div class="form-floating-icon">
-                                  <eva-icon name="people-outline"></eva-icon>
-                                </div>
+                                <label for="input-username "><p class="text-black-50">Username</p></label>
+                          
                                 <div
                                   v-if="userNameError"
                                   class="text-danger font-size-12"
@@ -232,7 +141,7 @@ export default {
                               </div>
 
                               <div
-                                class="form-floating form-floating-custom mb-4 auth-pass-inputgroup"
+                                class="form-floating form-floating-custom mb-4 "
                               >
                                 <input
                                   :type="showPassword ? 'text' : 'password'"
@@ -264,10 +173,8 @@ export default {
                                 >
                                   <i class="fa-solid fa-eye"></i>
                                 </button>
-                                <label for="password-input">Password</label>
-                                <div class="form-floating-icon">
-                                  <eva-icon name="lock-outline"></eva-icon>
-                                </div>
+                                <label for="input-username "><p class="text-black-50">Password</p></label>
+                                
                                 <div
                                   v-if="passwordError"
                                   class="text-danger font-size-12"
@@ -296,7 +203,7 @@ export default {
                               </p>
                             </div> -->
                           </div>
-                          <div class="mt-4 text-center">
+                          <div class="mt-4 text-center text-black-50">
                             <p class="mb-0">
                               ©
                               {{ new Date().getFullYear() }} Expense Tracker

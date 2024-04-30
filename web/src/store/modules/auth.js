@@ -112,7 +112,7 @@ const actions = {
         }
         if (response.data.data.isLoggingInFirstTime === false) {
           console.log("not first time");
-          router.push("/dashboard");
+          router.push("/home");
         }
       }
     } catch (error) {

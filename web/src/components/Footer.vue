@@ -9,8 +9,8 @@
   //display: flex;
 
   //justify-content: space-between;
-  // height: 7vh;
-  // padding-top: 20px;
+  height: 7vh;
+  padding-top: 20px;
 
   span {
     &:first-child {
