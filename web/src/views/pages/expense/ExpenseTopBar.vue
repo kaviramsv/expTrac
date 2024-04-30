@@ -65,25 +65,39 @@ export default {
     const handleDateRange = (modelData) => {
       // do something else with the data
       dateRange.value = toRaw(modelData);
-      console.log("dtRange:", toRaw(modelData));
+      // console.log("dtRange:", toRaw(modelData), toRaw(dateRange.value)[0].toISOString().substring(0, 10), toRaw(dateRange.value)[1].toISOString().substring(0, 10));
+       if (dateRange.value != null) {
+        date1.value=toRaw(dateRange.value)[0].toISOString().substring(0, 10);
+        date2.value = toRaw(dateRange.value)[1].toISOString().substring(0, 10);
+        // date1.value = new Date(
+        //   toRaw(dateRange.value).toISOString().substring(0, 10)
+        // ).getTime();
+        // let nextDay = new Date(
+        //   toRaw(dateRange.value).toISOString().substring(0, 10)
+        // );
+        // date2.value = nextDay.setDate(nextDay.getDate() + 1);
+      } else {
+        date1.value = null;
+        date2.value = null;
+      }
       //for muti range
       // store.commit("anomalies/SET_SELECTED_DATE_RANGE", [
       //   toRaw(dateRange.value)[0],
       //   toRaw(dateRange.value)[1],
       // ]);
 
-      if (dateRange.value != null) {
-        date1.value = new Date(
-          toRaw(dateRange.value).toISOString().substring(0, 10)
-        ).getTime();
-        let nextDay = new Date(
-          toRaw(dateRange.value).toISOString().substring(0, 10)
-        );
-        date2.value = nextDay.setDate(nextDay.getDate() + 1);
-      } else {
-        date1.value = null;
-        date2.value = null;
-      }
+      // if (dateRange.value != null) {
+      //   date1.value = new Date(
+      //     toRaw(dateRange.value).toISOString().substring(0, 10)
+      //   ).getTime();
+      //   let nextDay = new Date(
+      //     toRaw(dateRange.value).toISOString().substring(0, 10)
+      //   );
+      //   date2.value = nextDay.setDate(nextDay.getDate() + 1);
+      // } else {
+      //   date1.value = null;
+      //   date2.value = null;
+      // }
     };
     const handleSearch = async () => {
       console.log("dtRange:", dateRange.value, date1.value, date2.value);
@@ -159,9 +173,9 @@ export default {
       store.commit("expenses/SET_SELECTED_TAG", []);
       store.commit("expenses/SET_SELECTED_SPEND_FOR", []);
       store.commit("expenses/SET_SELECTED_CARD_NAME", []);
-      store.commit("anomalies/SET_SELECTED_DATE_FROM", "");
-      store.commit("anomalies/SET_SELECTED_DATE_TO", "");
-      store.commit("anomalies/SET_SORTING_PARAM", "");
+      store.commit("expenses/SET_SELECTED_DATE_FROM", "");
+      store.commit("expenses/SET_SELECTED_DATE_TO", "");
+      store.commit("expenses/SET_SORTING_PARAM", "");
       //console.log("mounted in the composition api anomaly list!");
       await store.dispatch("expenses/fetchFields");
       // await store.dispatch("expenses/fetchExpenses");
@@ -329,26 +343,28 @@ export default {
       class="m-0 mb-4 d-sm-block d-md-block d-lg-flex g-5 flex-wrap justify-content-around align-items-center p-auto"
     > -->
     <div class="row row-cols">
-      <div class="col-xl-11">
+      <div class="col-xl-11 col-10 px-auto">
         <div class="d-flex flex-column">
           <div
             class="row row-cols-xxl-6 row-cols-xl-2 row-cols-lg-2 row-cols-md-1 row-cols-sm-1 row-cols-1"
           >
             <div class="col" style="">
               <h6 class="font-size-10 text-muted">Pick The Date</h6>
-              <!-- <VueDatePicker
-            :min-time="{ hours: 0, minutes: 0, seconds: 0 }"
+              <VueDatePicker
+            :enable-time-picker="false"
             :model-value="dateRange"
             @update:model-value="handleDateRange"
+             :partial-range="false"
             range
-          ></VueDatePicker> -->
-              <VueDatePicker
+              :max-date="new Date()"
+          ></VueDatePicker>
+              <!-- <VueDatePicker
                 :model-value="dateRange"
                 @update:model-value="handleDateRange"
                 :enable-time-picker="false"
                 :max-date="new Date()"
                 :teleport="true"
-              ></VueDatePicker>
+              ></VueDatePicker> -->
             </div>
 
             <div class="col" style="">
@@ -757,4 +773,5 @@ export default {
   color: #9a1d22;
   background: inherit;
 }
+
 </style>
