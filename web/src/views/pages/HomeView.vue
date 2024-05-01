@@ -102,7 +102,7 @@ export default {
       },
     });
     const donutCategoryChart = ref({
-      series: [44, 55, 13, 33, 44, 55, 13, 33],
+      series: [],
       chartOptions: {
         chart: {
           height: 200,
@@ -151,7 +151,7 @@ export default {
       },
     });
     const donutStoreChart = ref({
-      series: [44, 55, 13, 33, 44, 55, 13, 33],
+      series: [],
       chartOptions: {
         chart: {
           height: 200,
@@ -206,7 +206,7 @@ export default {
       if (colour === "red") return "bg-danger";
       if (colour === "grey") return "bg-secondary";
       if (colour === "blue") return "bg-primary";
-      if (colour === "black") return "bg-dark";
+      if (colour === "black") return "bg-white text-danger";
       else return "bg-dark";
     };
     const updateChart = () => {
@@ -377,6 +377,16 @@ export default {
           </h6>
         </div>
       </div> -->
+        <loading
+        :active="isLoadingDashboard"
+        :can-cancel="false"
+        :is-full-page="false"
+        :enforce-focus="true"
+        loader="bars"
+        :width="100"
+        :height="100"
+        color="var(--primary)"
+      />
       <div class="row pb-0 mb-2">
         <div class="col-auto">
           <h6 class="font-size-14 text-uppercase text-muted">
@@ -421,21 +431,34 @@ export default {
                       ></i>
                       <i
                         v-if="exp.name == 'Cash'"
-                        class="fa-solid fa-money-check-dollar"
+                        class="fa-solid fa-money-check-dollar fa-2xl"
                       ></i>
                     </div>
 
                     <div class="ms-auto">
-                      <h5 class="m-0 p-0">$${{ exp.amount }}</h5>
+                      <h5 class="m-0 p-0">$${{ exp.amount ||0}}</h5>
                     </div>
                     <div><i class="bx bx-chip h1 text-warning"></i></div>
                   </div>
                   <div
                     class="mt-2 d-flex justify-content-center align-items-center g-4"
+                     
+                        v-if="exp.name != 'Cash'"
+                       
                   >
                     <div class="me-2">****</div>
                     <div class="me-2">****</div>
                     <div class="me-2">{{ exp.ending }}</div>
+                  </div>
+                  <div
+                    class="mt-2 d-flex justify-content-center align-items-center g-4"
+                     
+                        v-if="exp.name == 'Cash'"
+                       
+                  >
+                    <div class="me-2">&nbsp;</div>
+                    <div class="me-2">&nbsp;</div>
+                    <div class="me-2">&nbsp;</div>
                   </div>
                   <div class="mt-2">
                     <p class="text-white float-end mb-0">{{ exp.expiry }}</p>
@@ -540,7 +563,7 @@ export default {
           <div class="card-header bg-light">
             <h5 class="card-title">Top Tags for the Month</h5>
           </div>
-          <div class="card-body">
+          <div class="card-body" v-if="expensesEvent.length >=1 ">
             <div
               v-for="exp in expensesEvent"
               :key="exp"
@@ -563,6 +586,7 @@ export default {
               </div>
             </div>
           </div>
+           <div class="card-body mt-0" v-else><h5 class="text-black">No Events Yet</h5></div>
         </div>
       </div>
     </div>

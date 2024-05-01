@@ -135,20 +135,7 @@ export default {
 <template>
  
   <span>
-    <!-- style="height: calc(100vh-90px-70px)" -->
-    <!-- :style="scrollHeight" -->
-    <!-- <SimpleBar data-simplebar :style="scrollHeight" style="margin-top: 2vh"> -->
-
-    <!-- <SimpleBar data-simplebar :style="scrollHeight"> -->
-    <!-- <ul class="list-unstyled"> -->
-    <!-- <li v-for="expense in expenses" :key="expense?._id"> -->
-    <!-- <div class="row m-0 w-90">
-        <div class="card p-0 bg-gray">
-          <div class="card-body px-3 py-0 bg-gray"> -->
-    <!-- <p class="card-title-desc">
-								Add <code>.table-hover</code> to enable a hover state on table rows
-								within a <code>&lt;tbody&gt;</code>.
-							</p> -->
+  
     <div class="px-2 px-lg-5">
       <div
         class="position-relative table-responsive mb-0"
@@ -181,7 +168,8 @@ export default {
                 ></span>
               </th>
               <th class="d-none d-lg-table-cell">Spend For</th>
-              <th>Tag</th>
+              <th class="d-none d-lg-table-cell">Tag</th>
+              <th>Source</th>
               <th>
                 Amount<span v-if="sortingParam == 'amount-a'"
                   ><i class="fa fa-sort-alpha-down ms-2 text-primary"></i></span
@@ -195,7 +183,7 @@ export default {
           <tbody>
             <tr v-for="(expense, index) in expenses" :key="expense?._id">
               <td>
-                {{ new Date(expense?.timestamp).toLocaleString() }}
+                {{ new Date(expense?.timestamp).toLocaleString().split(',')[0] }}
               </td>
               <td class="d-none d-lg-table-cell">
                 {{ expense?.category }}
@@ -206,8 +194,11 @@ export default {
               <td class="d-none d-lg-table-cell">
                 {{ expense?.spendFor }}
               </td>
+              <td class="d-none d-lg-table-cell">
+               {{ expense?.tag }}
+              </td>
               <td>
-                {{ expense?.tag }}
+               {{ expense?.cardName }}
               </td>
               <td>
                 {{ expense?.amount }}

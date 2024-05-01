@@ -36,7 +36,7 @@ export default {
     let expenses = computed(
       () => store.getters["expenses/getFilteredExpenses"]
     );
-    let sum = computed(() => store.getters["expenses/getSum"]);
+    let sum = computed(() => store?.getters["expenses/getSum"]);
 
     let sortingParam = computed(
       () => store.getters["expenses/getSortingParam"]
@@ -68,7 +68,12 @@ export default {
       // console.log("dtRange:", toRaw(modelData), toRaw(dateRange.value)[0].toISOString().substring(0, 10), toRaw(dateRange.value)[1].toISOString().substring(0, 10));
        if (dateRange.value != null) {
         date1.value=toRaw(dateRange.value)[0].toISOString().substring(0, 10);
-        date2.value = toRaw(dateRange.value)[1].toISOString().substring(0, 10);
+        //  date2.value = toRaw(dateRange.value)[1].toISOString().substring(0, 10);
+        
+        let nextDay = new Date(
+          toRaw(dateRange.value)[1].toISOString().substring(0, 10)
+        );
+        date2.value = nextDay.setDate(nextDay.getDate() + 1);
         // date1.value = new Date(
         //   toRaw(dateRange.value).toISOString().substring(0, 10)
         // ).getTime();
@@ -381,6 +386,8 @@ export default {
                 @select="selectCategory"
                 @change="selectCategory"
                 @remove="selectCategory"
+                :select-label="'Select'"
+                :deselect-label="'Remove'"
               >
               </multiselect>
             </div>
@@ -395,6 +402,8 @@ export default {
                 @select="selectShop"
                 @change="selectShop"
                 @remove="selectShop"
+                :select-label="'Select'"
+                :deselect-label="'Remove'"
               >
               </multiselect>
             </div>
@@ -409,6 +418,8 @@ export default {
                 @select="selectTag"
                 @change="selectTag"
                 @remove="selectTag"
+                :select-label="'Select'"
+                :deselect-label="'Remove'"
               >
               </multiselect>
             </div>
@@ -423,6 +434,8 @@ export default {
                 @select="selectSpendFor"
                 @change="selectSpendFor"
                 @remove="selectSpendFor"
+                :select-label="'Select'"
+                :deselect-label="'Remove'"
               >
               </multiselect>
             </div>
@@ -437,6 +450,8 @@ export default {
                 @select="selectCardName"
                 @change="selectCardName"
                 @remove="selectCardName"
+                :select-label="'Select'"
+                :deselect-label="'Remove'"
               >
               </multiselect>
             </div>

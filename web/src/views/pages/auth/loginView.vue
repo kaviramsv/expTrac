@@ -68,14 +68,13 @@ export default {
 </script>
 
 <template>
-  <div class="auth-page text-black-50  " style="background-color:#41587adc">
+  <div class="auth-page text-black-50  " style="background-color:#41587adc,">
     <div class="container-fluid p-0 vh-100">
       <div
-        class="row g-0 align-items-center vh-100 w-90 d-flex justify-content-between"
-       
+        class="row g-0 align-items-center vh-100 w-90 d-flex justify-content-between"     
       >
        
-        
+         <div class="col-xxl-2 col-lg-4 col-md-6 me-5"></div>
          
         <div class="col-xxl-4 col-lg-4 col-md-6 me-5">
           <div class="row justify-content-center g-0">
@@ -103,13 +102,14 @@ export default {
                             </router-link>
                           </div>
                           <div class="auth-content my-auto">
-                            <div class="text-center text-black-50 mt-2">
+                            <div class="text-center text-black-50 mt-0 ">
                             
-                              <h5 class="mb-2 text-black">Expense Tracker</h5>
-
-                             <p class="mb-1 text-black">Sign In</p>
+                              <h1 class="mb-5 text-primary"  style="font-family: Pacifico, cursive;">Expense Tracker</h1>
+                              <h4 class="mb-3 text-dark-subtle fw-bold ">Sign In</h4>
+                            
                             </div>
                             <form @submit.prevent class="mt-4 pt-2">
+                            
                               <div
                                 v-if="authError"
                                 class="text-danger font-size-12 mb-2"
@@ -121,10 +121,11 @@ export default {
                               >
                                 <input
                                   type="text"
-                                  class="form-control bg-white text-dark "
+                                  class="form-control "
                                   id="input-username"
                                   placeholder="Enter User Name"
                                   v-model="userName"
+                                  autocomplete="off"
                                   @input="
                                     userNameError = '';
                                     store.commit('setAuthError', '');
@@ -219,6 +220,7 @@ export default {
           </div>
           <!-- end auth full page content -->
         </div>
+          <div class="col-xxl-2 col-lg-4 col-md-6 me-5"></div>
         <!-- end col -->
       </div>
       <!-- end row -->
